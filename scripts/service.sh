@@ -1,6 +1,8 @@
 #!/bin/bash
 sudo apt -y upgrade
 sudo apt install maven
+#git clone https://github.com/DevQAC/QA-Portal.git -b development
+#cd QA-Portal/qa-portal-services
 #mvn clean package
 sudo useradd serviceadmin 
 
@@ -29,16 +31,17 @@ done
 VAR2=("self-reflection")
 
 for val3 in ${VAR2[*]}; do
-        sudo mkdir /opt/$val3
-        sudo cp ~/QA-Portal/qa-portal-services/$val3/target/$val3-api-0.0.1-SNAPSHOT.jar /opt/$val3/
-        sudo chown -R serviceadmin /opt/$val3
-	sudo systemctl daemon-reload
+       sudo mkdir /opt/$val3
+       sudo cp ~/QA-Portal/qa-portal-services/$val3/target/$val3-api-0.0.1-SNAPSHOT.jar /opt/$val3/
+       sudo chown -R serviceadmin /opt/$val3
+	 sudo systemctl daemon-reload
 done
 
 for val3 in ${VAR2[*]}; do
         sudo systemctl stop $val3
         sudo sed "s/{{NAME}}/$val3/g" template-api.service | sudo tee /etc/systemd/system/$val3.service
         sudo systemctl start $val3
+	sudo systemctl daemon-reload
 done
 
 VAR3=("self-reflection" "user-api" "core-api")
