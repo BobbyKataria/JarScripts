@@ -1,0 +1,9 @@
+[Unit]
+Description=Managing {{NAME}} as a systemd service
+
+[Service]
+WorkingDirectory=/opt/{{NAME}}/
+ExecStart=/usr/bin/java -jar {{NAME}}-api-0.0.1-SNAPSHOT.jar
+
+[Install]
+WantedBy=multi-user.target
