@@ -1,15 +1,15 @@
 #!/bin/bash
-#sudo apt -y update
-#sudo apt install maven
-#git clone https://github.com/DevQAC/QA-Portal.git -b development
-#cd QA-Portal/qa-portal-services
-#mvn clean package
+sudo apt -y update
+sudo apt install -y maven
+git clone https://github.com/DevQAC/QA-Portal.git -b development
+cd QA-Portal/qa-portal-services
+mvn clean package
 
-#sudo useradd serviceadmin 
+sudo useradd serviceadmin 
 
-#sudo chown -R serviceadmin /etc/systemd/system
+sudo chown -R serviceadmin /etc/systemd/system
 sudo chown -R serviceadmin ~/JarScripts/scripts/QA-Portal/qa-portal-services/
-#sudo chown -R serviceadmin /usr/bin/java
+sudo chown -R serviceadmin /usr/bin/java
 
 #If the filename does have api in the title please insert in VAR, if not insert below into VAR2
 
